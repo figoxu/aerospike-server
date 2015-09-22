@@ -20,6 +20,8 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
+//aggr 合计 集合
+
 #pragma once
 
 #include <stdbool.h>
@@ -40,7 +42,7 @@
 #include "base/udf_record.h"
 #include "base/udf_rw.h"
 
-
+//调用类型
 typedef enum as_aggr_caller_type {
 	AS_AGGR_SCAN,
 	AS_AGGR_QUERY,

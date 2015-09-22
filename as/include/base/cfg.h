@@ -58,11 +58,13 @@
 
 struct as_namespace_s;
 
-/* as_config
+/* aerospike 运行时的配置参数
+ * as_config
  * Runtime configuration */
 typedef struct as_config_s {
 
-	/* Global service configuration */
+	/* 全局服务配置
+	 * Global service configuration */
 	uid_t				uid;
 	gid_t				gid;
 	char				*pidfile;
@@ -73,10 +75,12 @@ typedef struct as_config_s {
 	uint16_t			cluster_mode;
 	cf_node				hw_self_node; // Cache the HW value self-node value, for various uses.
 
-	/* IP address */
+	/* IP地址
+	 * IP address */
 	char				*node_ip;
 
-	/* Heartbeat system */
+	/* 心跳系统
+	 * Heartbeat system */
 	hb_mode_enum		hb_mode;
 	hb_protocol_enum	hb_protocol;
 	char				*hb_addr;
@@ -93,13 +97,15 @@ typedef struct as_config_s {
 
 	uint64_t			start_ms; // filled with the start time of the server
 
-	/* tuning parameters */
+	/* 可调参数
+	 * tuning parameters */
 	int					n_migrate_threads;
 	int					n_info_threads;
 	int					n_batch_index_threads;
 	int					n_batch_threads;
 
-	/* Query tunables */
+	/* 查询可调参数
+	 * Query tunables */
 	uint32_t			query_threads;
 	uint32_t			query_worker_threads;
 	uint32_t			query_priority;
@@ -124,31 +130,39 @@ typedef struct as_config_s {
 	bool				use_queue_per_device;
 	bool				allow_inline_transactions;
 
-	/* max client file descriptors */
+	/* 最大文件句柄 的描述
+	 * max client file descriptors */
 	int					n_proto_fd_max;
 
-	/* after this many milliseconds, connections are aborted unless transaction is in progress */
+	/* 在数毫秒后，Connection如果没有进行中的事物，连接会被终止
+	 * after this many milliseconds, connections are aborted unless transaction is in progress */
 	int					proto_fd_idle_ms;
 
-	/* sleep this many millisecond before retrying for all the blocked query */
+	/* 休眠数毫秒之后，重试那些被阻塞的查询
+	 * sleep this many millisecond before retrying for all the blocked query */
 	int					proto_slow_netio_sleep_ms;
 
 	/* The TCP port for the fabric */
 	int					fabric_port;
 
-	/* Fabric TCP socket keepalive parameters */
+	/* Fabric 是处理网络相关事物的模块
+	 * TCP KeepAlive的相关参数
+	 * Fabric TCP socket keepalive parameters */
 	bool				fabric_keepalive_enabled;
 	int					fabric_keepalive_time;
 	int					fabric_keepalive_intvl;
 	int					fabric_keepalive_probes;
 
-	/* The TCP port for the info socket */
+	/* info socket 的端口号
+	 * The TCP port for the info socket */
 	int					info_port;
 
-	/* Whether to bypass thr_tsvc for Info protocol requests. */
+	/* 请求是否通过密码访问来访问协议
+	 * Whether to bypass thr_tsvc for Info protocol requests. */
 	bool				info_fastpath_enabled;
 
-	/* The TCP socket for the listener */
+	/* TCP的网络监听
+	 * The TCP socket for the listener */
 	cf_socket_cfg		socket;
 
 	char				*external_address; // hostname that clients will connect on
